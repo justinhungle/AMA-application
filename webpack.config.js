@@ -2,6 +2,8 @@ const dev = process.env.NODE_ENV !== 'production' // Loads the environment that 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+
 
 module.exports = {
   mode:'development',
@@ -41,6 +43,6 @@ module.exports = {
     template: path.join(__dirname, 'client/src/template.html'), // Include your app's target node here.
     filename: 'index.html', // output file
   }),
-  new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }) // Cleans up all unwanted bundles
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }) // Cleans up all unwanted bundles
   ]
 };
