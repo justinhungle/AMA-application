@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 const InputFormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +15,7 @@ const InputButtonContainer = styled.div`
 `;
 const InputButton = styled.button``;
 
-export const InputForm = (props) => {
+export const InputForm = ({ getResponse, responses }) => {
   const [prompt, setPrompt] = useState("");
   return (
     <InputFormContainer>
@@ -32,9 +31,7 @@ export const InputForm = (props) => {
       ></InputTextArea>
       <InputButtonContainer>
         <InputButton onClick={(e) => {
-          axios.post('/prompts', {
-            prompt: prompt,
-          })
+          getResponse(prompt);
         }}>Submit</InputButton>
       </InputButtonContainer>
     </InputFormContainer>
