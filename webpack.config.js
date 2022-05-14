@@ -43,6 +43,7 @@ module.exports = {
     template: path.join(__dirname, 'client/src/template.html'), // Include your app's target node here.
     filename: 'index.html', // output file
   }),
-    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }) // Cleans up all unwanted bundles
+    new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }) // Cleans up all unwanted bundles,
+    new CompressionPlugin()
   ]
 };
