@@ -2,7 +2,7 @@ const env = require("dotenv").config();
 const express = require("express");
 const expressStaticGzip = require("express-static-gzip");
 const axios = require("axios");
-const { uuid } = require("uuidv4");
+const { v4 } = require("uuid");
 const path = require("path");
 
 const app = express();
@@ -28,7 +28,7 @@ app.post("/prompts", async (req, res) => {
   })
     .then((response) => {
       res.status(200).send({
-        id: uuid(),
+        id: v4(),
         response: response.data.choices[0].text,
         prompt: prompt,
       });

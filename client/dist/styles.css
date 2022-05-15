@@ -1,0 +1,10 @@
+body {
+  background-color: rgb(251, 196, 133);
+  overflow: auto;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+h1 {
+  color:rgb(255, 255, 255)
+}

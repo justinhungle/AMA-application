@@ -15,14 +15,22 @@ const ResponseList = styled.div`
 export const App = () => {
   const [responses, setResponses] = useState([]);
   const [gettingResponse, setGettingResponse] = useState(false);
-  const getResponse = (prompt) => {
+  const getResponse = async (prompt) => {
+    setResponses([
+      {
+        prompt: prompt,
+        response: "Hmmm...",
+        id: "Thinking",
+      },
+      ...responses,
+    ]);
     setGettingResponse(!gettingResponse);
-    axios
+    return axios
       .post("/prompts", {
         prompt: prompt,
       })
       .then((response) => {
-        setResponses([response.data, ...responses])
+        setResponses([response.data, ...responses]);
         setGettingResponse(false);
       })
       .catch((err) => {
@@ -33,15 +41,11 @@ export const App = () => {
   return (
     <AppContainer>
       <InputForm getResponse={getResponse} responses={responses} />
-      {gettingResponse ? (
-        <div>Let me think...</div>
-      ) : (
-        <ResponseList>
-          {responses.map((response) => (
-            <Response response={response} key={response.id} />
-          ))}
-        </ResponseList>
-      )}
+      <ResponseList>
+        {responses.map((response) => (
+          <Response response={response} key={response.id} />
+        ))}
+      </ResponseList>
     </AppContainer>
   );
 };
