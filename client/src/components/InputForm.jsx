@@ -6,15 +6,13 @@ const InputFormContainer = styled.div`
   width: auto;
   margin: 1rem;
 `;
-const InputTextArea = styled.textarea`
+const InputTextArea = styled.input`
   padding-left: 19px;
-  height: 6rem;
+  height: 4rem;
   border-radius: 16px;
   border-width: 0px;
-  padding-top: 12px;
   font-family: sans-serif;
-  font-size: 1rem;
-
+  font-size: 1.2rem;
 `;
 const InputButtonContainer = styled.div`
   display: flex;
@@ -49,6 +47,12 @@ export const InputForm = ({ getResponse, responses }) => {
         onChange={(e) => {
           e.preventDefault();
           setPrompt(e.target.value);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            getResponse(prompt);
+            setPrompt("");
+          }
         }}
       ></InputTextArea>
       <InputButtonContainer>
