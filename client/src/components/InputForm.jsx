@@ -8,12 +8,13 @@ const InputFormContainer = styled.div`
   margin: 1rem;
 `;
 const InputTextArea = styled.input`
-  padding-left: 19px;
+  padding-left: 10px;
   height: 4rem;
   border-radius: 16px;
   border-width: 0px;
   font-family: sans-serif;
   font-size: 1.2rem;
+  width: 100%;
 `;
 const InputButtonContainer = styled.div`
   display: flex;
@@ -36,6 +37,9 @@ const InputButton = styled.button`
     background-color: rgb(163, 88, 3);
   }
 `;
+const Input = styled.form`
+  width: auto;
+`
 
 export const InputForm = ({ getResponse, responses }) => {
   const [prompt, setPrompt] = useState("");
@@ -43,8 +47,10 @@ export const InputForm = ({ getResponse, responses }) => {
   return (
     <InputFormContainer>
       <h1>Ask me anything</h1>
+      <Input>
       <InputTextArea
         placeholder="Ask me anything... anything!"
+        type="text"
         value={prompt}
         required
         onChange={(e) => {
@@ -52,12 +58,13 @@ export const InputForm = ({ getResponse, responses }) => {
           setPrompt(e.target.value);
         }}
         onKeyDown={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === "Enter" && prompt !== "") {
             getResponse(prompt, engine);
             setPrompt("");
           }
         }}
       ></InputTextArea>
+      </Input>
       <InputButtonContainer>
         <DropSelectMenu
           options={[
