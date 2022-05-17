@@ -8,12 +8,12 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 const publicPath = path.join(__dirname, "../client/dist");
-const GPT3_URL = "https://api.openai.com/v1/engines/text-curie-001/completions";
 
 app.use("/", expressStaticGzip(publicPath));
 app.use(express.json());
 
 app.post("/prompts", async (req, res) => {
+  const GPT3_URL = `https://api.openai.com/v1/engines/${req.body.engine}/completions`;
   const prompt = req.body.prompt;
   axios(GPT3_URL, {
     method: "POST",
@@ -22,7 +22,7 @@ app.post("/prompts", async (req, res) => {
     },
     data: {
       prompt: prompt,
-      max_tokens: 200,
+      max_tokens: 300,
       temperature: 1,
     },
   })

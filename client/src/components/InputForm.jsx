@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { DropSelectMenu } from "./DropSelectMenu.jsx";
 const InputFormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -17,7 +18,7 @@ const InputTextArea = styled.input`
 const InputButtonContainer = styled.div`
   display: flex;
   margin-top: 0.5rem;
-  justify-content: end;
+  justify-content: flex-end;
 `;
 const InputButton = styled.button`
   font-size: 1.1em;
@@ -37,6 +38,7 @@ const InputButton = styled.button`
 
 export const InputForm = ({ getResponse, responses }) => {
   const [prompt, setPrompt] = useState("");
+  const [engine, setEngine] = useState("text-curie-001");
   return (
     <InputFormContainer>
       <h1>Ask me anything</h1>
@@ -50,15 +52,24 @@ export const InputForm = ({ getResponse, responses }) => {
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            getResponse(prompt);
+            getResponse(prompt, engine);
             setPrompt("");
           }
         }}
       ></InputTextArea>
       <InputButtonContainer>
+        <DropSelectMenu
+          options={[
+            { name: "Curie", engine: "text-curie-001" },
+            { name: "DaVinci", engine: "text-davinci-002" },
+            { name: "Babbage", engine: "text-babbage-001" },
+            { name: "Ada", engine: "text-ada-001" },
+          ]}
+          setEngine={setEngine}
+        />
         <InputButton
           onClick={(e) => {
-            getResponse(prompt);
+            getResponse(prompt, engine);
             setPrompt("");
           }}
         >

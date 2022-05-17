@@ -15,12 +15,14 @@ const ResponseList = styled.div`
 export const App = () => {
   const [responses, setResponses] = useState([]);
   const [gettingResponse, setGettingResponse] = useState(false);
-  const getResponse = (prompt) => {
+
+  const getResponse = (prompt, engine) => {
     setResponses([
       {
         prompt: prompt,
         response: "Hmmm...",
         id: "Thinking",
+        engine: engine,
       },
       ...responses,
     ]);
@@ -28,6 +30,7 @@ export const App = () => {
     return axios
       .post("/prompts", {
         prompt: prompt,
+        engine: engine,
       })
       .then((response) => {
         setResponses([response.data, ...responses]);
