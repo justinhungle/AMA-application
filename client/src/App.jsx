@@ -27,7 +27,7 @@ export const App = () => {
       ...responses,
     ]);
     setGettingResponse(!gettingResponse);
-    return axios
+    axios
       .post("/prompts", {
         prompt: prompt,
         engine: engine,
