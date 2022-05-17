@@ -31,6 +31,7 @@ const InputButton = styled.button`
   background-color: rgb(255, 138, 4);
   border: none;
   border-radius: 20px;
+  cursor: pointer;
   &:hover {
     background-color: rgb(163, 88, 3);
   }

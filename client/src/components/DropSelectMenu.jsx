@@ -17,6 +17,7 @@ font-family: sans-serif;
 background-color: rgb(255, 138, 4);
 border: none;
 border-radius: 20px;
+cursor: pointer;
 &:hover {
   background-color: rgb(163, 88, 3);
 }
@@ -38,6 +39,7 @@ const DropDownList = styled("ul")`
   color: white;
   font-size: 1.3rem;
   font-weight: 500;
+  cursor: pointer;
   &:first-child {
     padding-top: 0.8em;
   }
