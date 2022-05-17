@@ -22,7 +22,10 @@ border-radius: 20px;
 }
 `;
 
-const DropDownListContainer = styled("div")``;
+const DropDownListContainer = styled("div")`
+z-index: 10;
+position: fixed;
+`;
 
 const DropDownList = styled("ul")`
   padding: 0;
@@ -38,7 +41,7 @@ const DropDownList = styled("ul")`
   &:first-child {
     padding-top: 0.8em;
   }
-
+  z-index: 10;
 `;
 
 const ListItem = styled("li")`
