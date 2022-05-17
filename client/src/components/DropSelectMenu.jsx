@@ -67,12 +67,12 @@ export const DropSelectMenu = ({ options, setEngine }) => {
 
   return (
     <DropDownContainer>
-      <DropDownHeader onClick={toggling}>
+      <DropDownHeader onClick={toggling} onMouseEnter={toggling}>
         {selectedOption || "Select AI"}
       </DropDownHeader>
       {isOpen && (
-        <DropDownListContainer>
-          <DropDownList>
+        <DropDownListContainer >
+          <DropDownList onMouseLeave={toggling}>
             {options.map((option) => (
               <ListItem
                 onClick={onOptionClicked(option.name, option.engine)}
