@@ -15,7 +15,7 @@ const ResponseList = styled.div`
 export const App = () => {
   const [responses, setResponses] = useState([]);
   const [gettingResponse, setGettingResponse] = useState(false);
-  const getResponse = async (prompt) => {
+  const getResponse = (prompt) => {
     setResponses([
       {
         prompt: prompt,

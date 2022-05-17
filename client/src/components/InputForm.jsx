@@ -29,7 +29,7 @@ const InputButton = styled.button`
   font-family: sans-serif;
   background-color: rgb(255, 138, 4);
   border: none;
-  border-radius: 12px;
+  border-radius: 20px;
   &:hover {
     background-color: rgb(163, 88, 3);
   }
